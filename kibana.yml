@@ -1,0 +1,33 @@
+# Kibana configuration file
+
+server.name: "kibana"  # Optional, defaults to the container hostname
+
+# Connection to Elasticsearch
+elasticsearch.hosts: ["http://elasticsearch:9200"]
+elasticsearch.username: "new_kibana_user"
+elasticsearch.password: "ashish"
+
+# Monitoring UI
+xpack.monitoring.ui.enabled: true
+
+# Kibana memory settings
+# Adjust NODE_OPTIONS based on your resource requirements
+NODE_OPTIONS: "--max-old-space-size=2048"
+
+# Xpack Security (if enabled in Elasticsearch)
+xpack.security.enabled: true
+
+# SSL/TLS configuration (if using certificates)
+xpack.security.ssl:
+  verificationMode: certificate  # Adjust if using a different verification mode
+  certificate: "/usr/share/elasticsearch/config/certs/elastic-certificates.p12"
+  key: "/usr/share/elasticsearch/config/certs/elastic-certificates.p12"
+  certificateAuthorities: "/usr/share/elasticsearch/config/certs/elastic-stack-ca.p12"
+xpack.encryptedSavedObjects.encryptionKey: 413d4d1c97c54ad67f16d0a8c70b6527
+# **Important Note:**
+# The setting `xpack.alerting.encryptionKey` might be deprecated depending on your Elasticsearch version.
+# Check the official documentation for your specific version to see if this setting is still required and the correct syntax.
+# If deprecated, remove this line from your configuration.
+
+# Enable Xpack alerting if needed (refer to documentation for correct syntax)
+# xpack.alerting.enabled: true
