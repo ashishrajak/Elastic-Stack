@@ -6,7 +6,7 @@ server.host: "0.0.0.0"
 
 # Connection to Elasticsearch
 elasticsearch.hosts: ["http://elasticsearch:9200"]
-elasticsearch.username: "new_kibana_user"
+elasticsearch.username: "kibana_system"
 elasticsearch.password: "ashish"
 
 # Monitoring UI

@@ -15,7 +15,7 @@ services:
    #   - xpack.monitoring.collection.enabled=true
       - network.host=0.0.0.0
       - http.port=9200
-      - ES_JAVA_OPTS=-Xms4g -Xmx4g   
+      - ES_JAVA_OPTS=-Xms1g -Xmx1g    
       - xpack.alerting.encryptionKey=004a44c55ca3752437de35347f96714980a51a2dbba58390c6a4e16c53f141e6 
     volumes:
       - elasticsearch-data:/usr/share/elasticsearch/data
@@ -32,10 +32,10 @@ services:
     container_name: kibana
     environment:
       - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
-      - ELASTICSEARCH_USERNAME=new_kibana_user
+      - ELASTICSEARCH_USERNAME=kibana_system
       - ELASTICSEARCH_PASSWORD=ashish
     #  - xpack.monitoring.ui.enabled=true
-      - NODE_OPTIONS=--max-old-space-size=2048 
+      - NODE_OPTIONS=--max-old-space-size=512 
       - xpack.security.enabled=true
     #  - xpack.alerting.enabled=true 
     depends_on:
@@ -56,7 +56,7 @@ services:
       - ELASTIC_USERNAME=new_kibana_user
       - ELASTIC_PASSWORD=ashish
    #   - xpack.monitoring.collection.enabled=true
-      - LS_JAVA_OPTS=-Xms2g -Xmx2g  
+      - LS_JAVA_OPTS=-Xms512m -Xmx512m 
    #   - xpack.monitoring.ssl.enabled=true
       - xpack.monitoring.ssl.certificate=/usr/share/elasticsearch/config/certs/elastic-certificates.p12
       - xpack.monitoring.ssl.key=/usr/share/elasticsearch/config/certs/elastic-certificates.p12
